@@ -7,11 +7,11 @@ pipeline {
       }
       post {
               failure {
-                mail(subject: 'Repported changes', body: 'Salam, some changes occured and the build failed', from: 'ey_al_houcine@esi.dz', to: 'fm_bara@esi.dz')
+                mail(subject: 'echec du build', body: 'les derniers changements ont échoué le build', from: 'ey_al_houcine@esi.dz', to: 'fm_bara@esi.dz')
               }
              success {
 
-                mail(subject: 'Repported changes', body: 'Salam, some changes occured and the build successeded', from: 'ey_al_houcine@esi.dz', to: 'fm_bara@esi.dz')
+                mail(subject: 'build success', body: 'build avec success des derniers changements', from: 'ey_al_houcine@esi.dz', to: 'fm_bara@esi.dz')
               }
          }
     }
