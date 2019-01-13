@@ -46,6 +46,45 @@ pipeline {
         }
 
       }
+    
+    
+    stage('Deployment') {
+
+    when{
+
+        branch 'master'
+
+      }
+
+      steps {
+
+        bat 'gradle uploadArchives'
+
+      }
+
+    }
+
+
+
+
+
+    stage('slack notification') {
+
+     when{
+
+            branch 'master'
+
+          }
+
+      steps {
+
+        slackSend(message: 'salut, projet deployé !')
+
+
+
+      }
+
+    }
       
     
   
