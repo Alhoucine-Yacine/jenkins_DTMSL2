@@ -29,37 +29,29 @@ pipeline {
                           bat 'F:\\2CS_SIL_S7\\Outils\\TP3\\sonar-scanner-3.2.0.1227-windows\\bin\\sonar-scanner'
 
                         }
-
                     }
-
                   }
+        
+        
          stage('Test Reporting') {
 
               steps {
 
                 jacoco(maximumBranchCoverage: '60')
-
               }
-
             }
-
         }
-
-      }
+      } 
+    
+    
     
     
     stage('Deployment') {
-
     when{
-
         branch 'master'
-
       }
-
       steps {
-
         bat 'gradle uploadArchives'
-
       }
 
     }
