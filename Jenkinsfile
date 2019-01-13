@@ -19,18 +19,25 @@ pipeline {
       
     
     
-    stage('Code analysis') {
+    stage('Code Analysis') {
+
       parallel {
-         stage('SonarQube analysis') 
-        {
-           
-          steps{     
+
+        stage('Code Analysis') {
+
+          steps {
+
             withSonarQubeEnv('sonarqube') {
-              bat 'F:\\2CS_SIL_S7\\Outils\\TP3\\sonar-scanner-3.2.0.1227-windows\\bin\\sonar-scanner'
+
+              bat 'sonar-scanner'
+
             }
-              waitForQualityGate true
+
+
+            waitForQualityGate true
 
           }
+
         }
         stage('Test Reporting') {
               steps {
