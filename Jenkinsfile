@@ -19,7 +19,7 @@ pipeline {
       
     
     
-    stage('Code Analysis') {
+  stage('Code Analysis') {
 
       parallel {
 
@@ -34,17 +34,25 @@ pipeline {
             }
 
 
+
             waitForQualityGate true
 
           }
 
         }
+
         stage('Test Reporting') {
-              steps {
-                jacoco(maximumBranchCoverage: '60')
-              }
-            }
+
+          steps {
+
+            jacoco(buildOverBuild: true)
+
+          }
+
         }
+
+      }
+
     }
   }
 }
