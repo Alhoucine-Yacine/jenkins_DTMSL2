@@ -37,15 +37,5 @@ jacocoTestReport {
 }
 
 
-deployJar {
-    repositories {
-        maven {
-            credentials {
-                username "myMavenRepo"
-                password "root"
-            }
-            url "https://mymavenrepo.com/repo/MAc7kpVeYES6gmnTqTvD/"
-        }
-    }
-}
+
 
