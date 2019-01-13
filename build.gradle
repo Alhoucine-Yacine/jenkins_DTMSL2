@@ -51,7 +51,7 @@ jacocoTestCoverageVerification {
 test.finalizedBy ("jacocoTestReport","jacocoTestCoverageVerification")
 
 
-deployJar {
+uploadArchives {
     repositories {
         maven {
             credentials {
@@ -63,4 +63,3 @@ deployJar {
     }
 }
 
-deployJar.dependsOn('build')
