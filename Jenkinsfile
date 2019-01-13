@@ -27,7 +27,7 @@ pipeline {
                           scannerHome = tool 'SonarQube Scanner 3.2.0.1227'
                       }
                       withSonarQubeEnv('sonarqube') {
-                        bat 'F:\2CS_SIL_S7\Outils\TP3\sonar-scanner-3.2.0.1227-windows\bin\sonar-scanner'
+                        bat 'F:\\2CS_SIL_S7\\Outils\\TP3\\sonar-scanner-3.2.0.1227-windows\\bin\\sonar-scanner'
                       }
                         waitForQualityGate abortPipeline: true
                       
