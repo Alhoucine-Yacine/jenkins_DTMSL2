@@ -16,43 +16,38 @@ pipeline {
                   }
              }
       }
-      
-    
-    
-  stage('Code Analysis') {
+      stage('Code analysis') {
 
       parallel {
 
-        stage('Code Analysis') {
+         stage('SonarQube') {
 
-          steps {
+                    steps {
 
-            withSonarQubeEnv('sonarqube') {
+                        withSonarQubeEnv('sonarqube') {
 
-              bat 'sonar-scanner'
+                          bat 'F:\\2CS_SIL_S7\\Outils\TP3\\sonar-scanner-3.2.0.1227-windows\\bin\\sonar-scanner'
+
+                        }
+
+                    }
+
+                  }
+         stage('Test Reporting') {
+
+              steps {
+
+                jacoco(maximumBranchCoverage: '60')
+
+              }
 
             }
-
-
-
-            waitForQualityGate true
-
-          }
-
-        }
-
-        stage('Test Reporting') {
-
-          steps {
-
-            jacoco(buildOverBuild: true)
-
-          }
 
         }
 
       }
-
-    }
+      
+    
+  
   }
 }
