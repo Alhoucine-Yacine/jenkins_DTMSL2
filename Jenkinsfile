@@ -21,16 +21,17 @@ pipeline {
     
     stage('Code analysis') {
       parallel {
-         stage('SonarQube analysis') {
-                    steps {
+         stage('SonarQube analysis') 
+        {
+           steps {
                      
-                      withSonarQubeEnv('sonarqube') {
-                        bat 'F:\\2CS_SIL_S7\\Outils\\TP3\\sonar-scanner-3.2.0.1227-windows\\bin\\sonar-scanner'
-                      }
-                        waitForQualityGate abortPipeline: true
-                      
-                    }
-                  }
+            withSonarQubeEnv('sonarqube') {
+              bat 'F:\\2CS_SIL_S7\\Outils\\TP3\\sonar-scanner-3.2.0.1227-windows\\bin\\sonar-scanner.bat'
+            }
+              waitForQualityGate abortPipeline: true
+
+          }
+        }
         stage('Test Reporting') {
               steps {
                 jacoco(maximumBranchCoverage: '60')
